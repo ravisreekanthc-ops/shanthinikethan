@@ -134,14 +134,21 @@ export default function MandatoryDisclosure() {
             >
               <div className="space-y-3">
                 {/* Card Header: Category & Code */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-navy-50 text-navy-800 border border-navy-100">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-navy-50 text-navy-800 border border-navy-100 shrink-0">
                     {item.code}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                    <CheckCircle className="w-3 h-3 text-emerald-600" />
-                    {item.verifiedStatus}
-                  </span>
+                  <div className="flex items-center gap-1.5 overflow-hidden">
+                    {item.officialName && (
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 truncate hidden sm:inline-block max-w-[130px]">
+                        {item.officialName}
+                      </span>
+                    )}
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                      <CheckCircle className="w-3 h-3 text-emerald-600" />
+                      {item.verifiedStatus}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Title */}
@@ -176,8 +183,9 @@ export default function MandatoryDisclosure() {
                     href={item.fileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center p-2 rounded-lg text-xs font-bold text-navy-900 bg-gold-400 hover:bg-gold-500 transition-colors"
-                    title="Download / Open Official Document"
+                    download={item.documentType !== "OASIS Report"}
+                    className="inline-flex items-center justify-center p-2 rounded-lg text-xs font-bold text-navy-900 bg-gold-400 hover:bg-gold-500 transition-colors shadow-sm"
+                    title={`Download ${item.title}`}
                   >
                     <Download className="w-3.5 h-3.5" />
                   </a>
@@ -260,29 +268,74 @@ export default function MandatoryDisclosure() {
               </div>
             </div>
 
-            {/* Document placeholder audit frame */}
-            <div className="h-48 rounded-xl bg-slate-100 border border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-500 space-y-2">
-              <FileText className="w-10 h-10 text-slate-400" />
-              <div className="text-xs font-semibold text-slate-700">Digital Certified Copy Ready</div>
-              <div className="text-[11px] text-slate-400">Sri Shantiniketan Official Registry (Nandyal)</div>
+            {/* Embedded Document Viewer */}
+            <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 min-h-[380px] max-h-[60vh] flex flex-col items-center justify-center">
+              {previewDoc.documentType === "PDF" ? (
+                <iframe
+                  src={previewDoc.fileUrl}
+                  title={previewDoc.title}
+                  className="w-full h-[450px] border-0"
+                />
+              ) : previewDoc.documentType === "Excel" ? (
+                <div className="p-8 text-center space-y-3">
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl shadow-inner">
+                    XLS
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-navy-950">{previewDoc.title}</h4>
+                    <p className="text-xs text-slate-500 mt-1">Official Excel Spreadsheet • {previewDoc.fileSize}</p>
+                  </div>
+                  <a
+                    href={previewDoc.fileUrl}
+                    download
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Excel Sheet ({previewDoc.fileSize})</span>
+                  </a>
+                </div>
+              ) : (
+                <div className="p-8 text-center space-y-3">
+                  <ExternalLink className="w-12 h-12 text-navy-600 mx-auto" />
+                  <div>
+                    <h4 className="text-sm font-bold text-navy-950">{previewDoc.title}</h4>
+                    <p className="text-xs text-slate-500 mt-1">External CBSE National Database Record</p>
+                  </div>
+                  <a
+                    href={previewDoc.fileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs shadow-md transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Open External Portal</span>
+                  </a>
+                </div>
+              )}
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-2">
-              <button
-                onClick={() => setPreviewDoc(null)}
-                className="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100"
-              >
-                Close
-              </button>
-              <a
-                href={previewDoc.fileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg text-xs font-bold text-navy-950 bg-gold-400 hover:bg-gold-500 shadow-sm"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Open / Download Original PDF</span>
-              </a>
+            <div className="flex items-center justify-between gap-3 pt-2">
+              <span className="text-[11px] text-slate-500 font-mono truncate">
+                File: {previewDoc.officialName || previewDoc.fileUrl.split("/").pop()}
+              </span>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={() => setPreviewDoc(null)}
+                  className="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100"
+                >
+                  Close
+                </button>
+                <a
+                  href={previewDoc.fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download={previewDoc.documentType !== "OASIS Report"}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-navy-950 bg-gold-400 hover:bg-gold-500 shadow-sm"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download File</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
