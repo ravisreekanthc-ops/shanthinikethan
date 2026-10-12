@@ -108,11 +108,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Disclaimer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        {/* Bottom Disclaimer & Technology Partner Credit */}
+        <div className="pt-8 border-t border-navy-900/80 mt-2 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <div>
             © 2026 Sri Shantiniketan Educational Society, Nandyal. All rights reserved.
           </div>
+
+          {/* Technology Partner Attribution */}
+          <div className="flex items-center gap-1 text-slate-400 text-center">
+            <span>Technology Partner • Designed &amp; Developed by</span>
+            <a
+              href="https://mokshadigital.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1 ml-1"
+            >
+              <span>Moksha Digital Software Solutions</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+
           <div className="flex items-center gap-4">
             <Link href="/mandatory-disclosure" className="hover:text-slate-400">Public Disclosures</Link>
             <span>•</span>
