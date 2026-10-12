@@ -115,7 +115,7 @@ export default function Footer() {
           </div>
 
           {/* Technology Partner Attribution */}
-          <div className="flex items-center gap-1 text-slate-400 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 text-slate-400 text-center">
             <span>Technology Partner • Designed &amp; Developed by</span>
             <a
               href="https://mokshadigital.net/"
@@ -123,7 +123,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1 ml-1"
             >
-              <span>Moksha Digital Software Solutions</span>
+              <span>MOKSHA DIGITAL TECHNOLOGIES PRIVATE LIMITED</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
