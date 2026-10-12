@@ -119,15 +119,25 @@ export default function WhyChooseUsComparison() {
                 </div>
 
                 {/* Column 2: Conventional */}
-                <div className="md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm text-slate-500 bg-rose-50/50 p-3 rounded-xl border border-rose-100">
+                <div className="md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm text-slate-500 bg-rose-50/60 p-3.5 rounded-xl border border-rose-100">
                   <X className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                  <span>{row.conventional}</span>
+                  <div>
+                    <span className="md:hidden text-[10px] font-extrabold uppercase tracking-wider text-rose-700 block mb-1">
+                      Conventional Schools in Town:
+                    </span>
+                    <span>{row.conventional}</span>
+                  </div>
                 </div>
 
                 {/* Column 3: Sri Shantiniketan Advantage */}
-                <div className="md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-navy-950 bg-emerald-50/60 p-3 rounded-xl border border-emerald-200 shadow-sm">
+                <div className="md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm font-semibold text-navy-950 bg-emerald-50/80 p-3.5 rounded-xl border border-emerald-200 shadow-sm">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{row.shantiniketan}</span>
+                  <div>
+                    <span className="md:hidden text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 block mb-1">
+                      Sri Shantiniketan Advantage:
+                    </span>
+                    <span>{row.shantiniketan}</span>
+                  </div>
                 </div>
               </div>
             ))}

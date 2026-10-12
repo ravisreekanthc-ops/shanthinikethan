@@ -87,12 +87,12 @@ export default function MandatoryDisclosure() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by certificate name, code (e.g. STAT-01, Fire Safety, Fee, Land)..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white shadow-inner"
+                className="w-full pl-10 pr-4 py-2.5 min-h-[44px] rounded-xl border border-slate-300 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white shadow-inner"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 min-w-[32px] min-h-[32px] flex items-center justify-center"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -107,13 +107,13 @@ export default function MandatoryDisclosure() {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar touch-pan-x">
             <Filter className="w-3.5 h-3.5 text-slate-400 shrink-0 ml-1" />
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap transition-all ${
+                className={`text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap min-h-[36px] transition-all active:scale-95 ${
                   selectedCategory === cat
                     ? "bg-navy-900 text-white shadow-sm"
                     : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
@@ -239,20 +239,21 @@ export default function MandatoryDisclosure() {
 
       {/* Modal Document Viewer Dialog */}
       {previewDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-200 p-6 space-y-4">
-            <div className="flex items-start justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-navy-950/70 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+          <div className="bg-white w-full max-w-2xl rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 p-4 sm:p-6 space-y-4 my-auto max-h-[92vh] flex flex-col justify-between overflow-y-auto">
+            <div className="flex items-start justify-between gap-2">
               <div>
                 <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-navy-100 text-navy-800">
                   {previewDoc.code} • {previewDoc.category}
                 </span>
-                <h3 className="text-lg font-bold text-navy-950 mt-1 font-display">
+                <h3 className="text-base sm:text-lg font-bold text-navy-950 mt-1 font-display">
                   {previewDoc.title}
                 </h3>
               </div>
               <button
                 onClick={() => setPreviewDoc(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors shrink-0"
+                aria-label="Close document modal"
               >
                 <X className="w-5 h-5" />
               </button>

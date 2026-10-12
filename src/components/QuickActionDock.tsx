@@ -112,7 +112,7 @@ export default function QuickActionDock() {
                   type="text"
                   required
                   placeholder="e.g. Ramesh Kumar"
-                  className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
+                  className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
                 />
               </div>
 
@@ -125,7 +125,7 @@ export default function QuickActionDock() {
                     type="tel"
                     required
                     placeholder="+91 98765 43210"
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
+                    className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
                   />
                 </div>
                 <div>
@@ -135,7 +135,7 @@ export default function QuickActionDock() {
                   <select
                     required
                     aria-label="Seeking Grade"
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
+                    className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
                   >
                     <option value="">Select Grade</option>
                     <option value="Pre-KG">Pre-KG / Nursery</option>
@@ -155,7 +155,7 @@ export default function QuickActionDock() {
                   <input
                     type="date"
                     required
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
+                    className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
                   />
                 </div>
               )}
@@ -166,7 +166,7 @@ export default function QuickActionDock() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-navy-950 bg-gradient-to-r from-gold-400 to-amber-500 shadow-md hover:shadow-glow transition-all"
+                  className="w-full flex items-center justify-center gap-2 min-h-[48px] py-3 rounded-xl text-xs sm:text-xs font-bold uppercase tracking-wider text-navy-950 bg-gradient-to-r from-gold-400 to-amber-500 shadow-md hover:shadow-glow active:scale-95 transition-all"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>

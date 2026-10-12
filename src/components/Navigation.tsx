@@ -32,6 +32,17 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const handleAcademicClick = (stageId: string) => {
     setAcademicsDropdown(false);
     setMobileMenuOpen(false);
@@ -49,31 +60,31 @@ export default function Navigation() {
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
       {/* 1. Top Regulatory & Utility Bar */}
-      <div className="bg-navy-900 text-slate-200 text-xs py-2 px-4 border-b border-navy-800">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-navy-900 text-slate-200 text-xs py-1.5 px-3 sm:px-4 border-b border-navy-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Regulatory Badges */}
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-navy-800/80 text-gold-400 font-semibold border border-gold-500/20">
-              <ShieldCheck className="w-3.5 h-3.5 text-gold-400" />
-              CBSE Affiliation No: 130730
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-navy-800/80 text-gold-400 font-semibold border border-gold-500/20 text-[11px] sm:text-xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+              <span>CBSE Affiliation: 130730</span>
             </span>
             <span className="hidden sm:inline text-slate-400">|</span>
-            <span className="hidden sm:inline text-slate-300">School Code: 57222</span>
+            <span className="hidden sm:inline text-slate-300">Code: 57222</span>
             <span className="hidden md:inline text-slate-400">|</span>
-            <span className="hidden md:inline text-slate-300">Nandyal, Andhra Pradesh</span>
+            <span className="hidden md:inline text-slate-300">Nandyal, AP</span>
           </div>
 
           {/* Quick Contact & Portals */}
-          <div className="flex items-center gap-4 text-xs font-medium">
+          <div className="flex items-center gap-2 sm:gap-4 text-xs font-medium">
             <a
               href="tel:+919063966896"
-              className="inline-flex items-center gap-1.5 text-slate-200 hover:text-gold-400 transition-colors"
+              className="inline-flex items-center gap-1 text-slate-200 hover:text-gold-400 transition-colors text-[11px] sm:text-xs font-bold bg-navy-800/60 sm:bg-transparent px-2.5 py-1 sm:px-0 rounded-full min-h-[32px]"
               aria-label="Direct Admission Hotline: +91 90639 66896"
             >
-              <Phone className="w-3 h-3 text-gold-400" />
+              <Phone className="w-3 h-3 text-gold-400 shrink-0" />
               <span>+91 90639 66896</span>
             </a>
-            <span className="text-slate-700">|</span>
+            <span className="hidden sm:inline text-slate-700">|</span>
             <a
               href="mailto:info@srishantiniketancbse.com"
               className="hidden lg:inline-flex items-center gap-1.5 text-slate-200 hover:text-gold-400 transition-colors"
@@ -81,13 +92,13 @@ export default function Navigation() {
               <Mail className="w-3 h-3 text-gold-400" />
               <span>info@srishantiniketancbse.com</span>
             </a>
-            <span className="hidden lg:inline text-slate-700">|</span>
+            <span className="hidden sm:inline text-slate-700">|</span>
             <a
               href="#parent-portal"
-              className="inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 bg-gold-600/20 px-2.5 py-0.5 rounded-full border border-gold-500/30 transition-all"
+              className="hidden sm:inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 bg-gold-600/20 px-2.5 py-0.5 rounded-full border border-gold-500/30 transition-all text-xs"
             >
               <UserCheck className="w-3 h-3" />
-              <span>Parent / Student Portal</span>
+              <span>Portal</span>
             </a>
           </div>
         </div>
@@ -239,11 +250,12 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with 44px touch target */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-navy-900 hover:bg-slate-100 transition-colors"
+            className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-navy-900 hover:bg-slate-100 active:scale-95 transition-all"
             aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -252,84 +264,85 @@ export default function Navigation() {
 
       {/* 3. Mobile Slide-Over Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[88px] bg-navy-950/40 backdrop-blur-md z-40">
-          <div className="bg-white border-b border-slate-200 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl animate-in slide-in-from-top duration-300">
-            <div className="flex flex-col space-y-3">
+        <div className="lg:hidden fixed inset-x-0 top-full h-[calc(100vh-100%)] bg-navy-950/60 backdrop-blur-sm z-50 overflow-y-auto">
+          <div className="bg-white border-b border-slate-200 px-5 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top duration-250 pb-20">
+            <div className="flex flex-col space-y-2">
               <Link
                 href="/#about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-navy-900 hover:text-gold-600 py-1"
+                className="text-base font-bold text-navy-900 hover:text-gold-600 min-h-[44px] flex items-center px-2 rounded-xl active:bg-slate-50 transition-colors"
               >
                 About Sri Shantiniketan
               </Link>
 
               {/* Mobile Academic Stage Links */}
-              <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block px-1">
                   Academic Stages
                 </span>
                 <button
                   onClick={() => handleAcademicClick("early")}
-                  className="w-full text-left text-xs font-bold text-navy-900 hover:text-gold-600 py-1 flex items-center justify-between"
+                  className="w-full text-left text-xs font-bold text-navy-900 hover:text-gold-600 min-h-[44px] px-2.5 py-2 rounded-xl flex items-center justify-between active:bg-slate-200/60 transition-colors"
                 >
                   <span>Pre-Primary & Foundation</span>
-                  <span className="text-[10px] text-slate-400">Nursery-UKG</span>
+                  <span className="text-[10px] text-slate-400 bg-white px-2 py-0.5 rounded border border-slate-200">Nursery-UKG</span>
                 </button>
                 <button
                   onClick={() => handleAcademicClick("primary")}
-                  className="w-full text-left text-xs font-bold text-navy-900 hover:text-gold-600 py-1 flex items-center justify-between"
+                  className="w-full text-left text-xs font-bold text-navy-900 hover:text-gold-600 min-h-[44px] px-2.5 py-2 rounded-xl flex items-center justify-between active:bg-slate-200/60 transition-colors"
                 >
                   <span>Primary School</span>
-                  <span className="text-[10px] text-slate-400">Grades 1-5</span>
+                  <span className="text-[10px] text-slate-400 bg-white px-2 py-0.5 rounded border border-slate-200">Grades 1-5</span>
                 </button>
                 <button
                   onClick={() => handleAcademicClick("middle")}
-                  className="w-full text-left text-xs font-bold text-indigo-950 hover:text-indigo-700 py-1 flex items-center justify-between bg-indigo-50/60 px-2 py-1.5 rounded-lg border border-indigo-200/50"
+                  className="w-full text-left text-xs font-bold text-indigo-950 hover:text-indigo-700 min-h-[44px] flex items-center justify-between bg-indigo-50/70 px-2.5 py-2 rounded-xl border border-indigo-200/50 active:bg-indigo-100 transition-colors"
                 >
                   <span>Middle School (Coding & STEM)</span>
-                  <span className="text-[10px] font-semibold text-indigo-600">Grades 6-8</span>
+                  <span className="text-[10px] font-semibold text-indigo-700 bg-white px-2 py-0.5 rounded border border-indigo-200">Grades 6-8</span>
                 </button>
                 <button
                   onClick={() => handleAcademicClick("secondary")}
-                  className="w-full text-left text-xs font-bold text-gold-900 bg-gold-50/80 px-2 py-1.5 rounded-lg border border-gold-300 flex items-center justify-between"
+                  className="w-full text-left text-xs font-bold text-gold-950 bg-gold-50/90 px-2.5 py-2 rounded-xl border border-gold-300 min-h-[44px] flex items-center justify-between active:bg-gold-100 transition-colors"
                 >
                   <span>Secondary & IIT-JEE Foundation</span>
-                  <span className="text-[10px] font-semibold text-gold-700">Class 9-10</span>
+                  <span className="text-[10px] font-semibold text-gold-800 bg-white px-2 py-0.5 rounded border border-gold-200">Class 9-10</span>
                 </button>
               </div>
+
               <Link
                 href="/#events"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-navy-900 hover:text-gold-600 py-1"
+                className="text-base font-bold text-navy-900 hover:text-gold-600 min-h-[44px] flex items-center px-2 rounded-xl active:bg-slate-50 transition-colors"
               >
                 School Events (ISRO, Science Congress)
               </Link>
               <Link
                 href="/#gallery"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-navy-900 hover:text-gold-600 py-1"
+                className="text-base font-bold text-navy-900 hover:text-gold-600 min-h-[44px] flex items-center px-2 rounded-xl active:bg-slate-50 transition-colors"
               >
                 Campus & Robotics Gallery
               </Link>
               <Link
                 href="/#videos"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-navy-900 hover:text-gold-600 py-1"
+                className="text-base font-bold text-navy-900 hover:text-gold-600 min-h-[44px] flex items-center px-2 rounded-xl active:bg-slate-50 transition-colors"
               >
                 Official YouTube Videos
               </Link>
               <Link
                 href="/mandatory-disclosure"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-gold-700 bg-gold-50 p-2.5 rounded-xl border border-gold-200 flex items-center justify-between"
+                className="text-sm font-bold text-gold-800 bg-gold-50/90 p-3 rounded-xl border border-gold-300 flex items-center justify-between active:bg-gold-100 transition-colors min-h-[44px]"
               >
                 <span>CBSE Mandatory Disclosure (OASIS)</span>
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4 text-gold-700" />
               </Link>
               <Link
                 href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-navy-900 hover:text-gold-600 py-1"
+                className="text-base font-bold text-navy-900 hover:text-gold-600 min-h-[44px] flex items-center px-2 rounded-xl active:bg-slate-50 transition-colors"
               >
                 Contact & Campus Location
               </Link>
@@ -339,13 +352,13 @@ export default function Navigation() {
               <Link
                 href="/#admissions"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full block text-center py-3 rounded-xl font-bold text-sm uppercase tracking-wider text-navy-950 bg-gold-400 shadow-md"
+                className="w-full flex items-center justify-center min-h-[48px] rounded-xl font-bold text-sm uppercase tracking-wider text-navy-950 bg-gradient-to-r from-gold-400 to-amber-500 shadow-md active:scale-95 transition-transform"
               >
                 Apply for Admission 2026-27
               </Link>
               <a
                 href="tel:+919063966896"
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold text-navy-900 bg-slate-100 border border-slate-200"
+                className="w-full flex items-center justify-center gap-2 min-h-[48px] rounded-xl text-sm font-semibold text-navy-900 bg-slate-100 border border-slate-200 active:bg-slate-200 transition-colors"
               >
                 <Phone className="w-4 h-4 text-gold-600" />
                 Call Admissions: +91 90639 66896

@@ -147,16 +147,16 @@ export default function AcademicStages() {
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 overflow-x-auto pb-4 mb-10 no-scrollbar">
+        {/* Tab Navigation with mobile swipe ergonomics */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-4 overflow-x-auto pb-4 mb-8 sm:mb-10 px-2 sm:px-0 no-scrollbar touch-pan-x">
           {stages.map((stage) => (
             <button
               key={stage.id}
               id={`stage-tab-${stage.id}`}
               onClick={() => setActiveTab(stage.id)}
-              className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex flex-col items-center ${
+              className={`px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex flex-col items-center shrink-0 min-h-[48px] active:scale-95 ${
                 activeTab === stage.id
-                  ? "bg-navy-900 text-white shadow-lg shadow-navy-900/20 scale-105"
+                  ? "bg-navy-900 text-white shadow-lg shadow-navy-900/20 scale-100 sm:scale-105"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >

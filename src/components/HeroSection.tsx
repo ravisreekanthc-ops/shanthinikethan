@@ -184,7 +184,7 @@ export default function HeroSection() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-3.5">
                     <div>
                       <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                         Parent / Guardian Name *
@@ -195,7 +195,7 @@ export default function HeroSection() {
                         value={parentName}
                         onChange={(e) => setParentName(e.target.value)}
                         placeholder="e.g. Ramesh Kumar"
-                        className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
+                        className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
                       />
                     </div>
 
@@ -209,7 +209,7 @@ export default function HeroSection() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 98765 43210"
-                        className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
+                        className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white"
                       />
                     </div>
 
@@ -222,7 +222,7 @@ export default function HeroSection() {
                         aria-label="Target Grade"
                         value={grade}
                         onChange={(e) => setGrade(e.target.value)}
-                        className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
+                        className="w-full text-base sm:text-xs px-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-navy-900 bg-white text-slate-700"
                       >
                         <option value="">Select Grade</option>
                         <option value="Pre-Primary">Pre-Primary (Nursery, LKG, UKG)</option>
@@ -234,9 +234,9 @@ export default function HeroSection() {
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-navy-950 bg-gradient-to-r from-gold-400 via-gold-500 to-amber-500 hover:from-gold-300 hover:to-amber-400 transition-all shadow-md hover:shadow-glow active:scale-95"
+                      className="w-full flex items-center justify-center gap-2 min-h-[48px] py-3 rounded-xl text-xs sm:text-xs font-bold uppercase tracking-wider text-navy-950 bg-gradient-to-r from-gold-400 via-gold-500 to-amber-500 hover:from-gold-300 hover:to-amber-400 transition-all shadow-md hover:shadow-glow active:scale-95"
                     >
-                      <MessageCircle className="w-4 h-4 fill-current" />
+                      <MessageCircle className="w-4 h-4 fill-current shrink-0" />
                       <span>Send 2026 Prospectus via WhatsApp</span>
                     </button>
                   </form>

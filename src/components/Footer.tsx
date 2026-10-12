@@ -109,31 +109,31 @@ export default function Footer() {
         </div>
 
         {/* Bottom Disclaimer & Technology Partner Credit */}
-        <div className="pt-8 border-t border-navy-900/80 mt-2 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
-          <div>
+        <div className="pt-8 border-t border-navy-900/80 mt-2 flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-[11px] text-slate-400 text-center md:text-left">
+          <div className="text-slate-500">
             © 2026 Sri Shantiniketan Educational Society, Nandyal. All rights reserved.
           </div>
 
           {/* Technology Partner Attribution */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 text-slate-400 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 text-slate-400 text-center max-w-md">
             <span>Technology Partner • Designed &amp; Developed by</span>
             <a
               href="https://mokshadigital.net/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1 ml-1"
+              className="font-bold text-gold-400 hover:text-gold-300 underline underline-offset-4 transition-colors inline-flex items-center gap-1 py-1"
             >
               <span>MOKSHA DIGITAL TECHNOLOGIES PRIVATE LIMITED</span>
-              <ExternalLink className="w-3 h-3" />
+              <ExternalLink className="w-3.5 h-3.5 shrink-0" />
             </a>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Link href="/mandatory-disclosure" className="hover:text-slate-400">Public Disclosures</Link>
-            <span>•</span>
-            <Link href="/#privacy" className="hover:text-slate-400">Privacy Policy</Link>
-            <span>•</span>
-            <Link href="/#terms" className="hover:text-slate-400">Terms of Admission</Link>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-slate-400">
+            <Link href="/mandatory-disclosure" className="hover:text-gold-400 py-1 transition-colors">Public Disclosures</Link>
+            <span className="text-slate-700">•</span>
+            <Link href="/#privacy" className="hover:text-gold-400 py-1 transition-colors">Privacy Policy</Link>
+            <span className="text-slate-700">•</span>
+            <Link href="/#terms" className="hover:text-gold-400 py-1 transition-colors">Terms of Admission</Link>
           </div>
         </div>
       </div>

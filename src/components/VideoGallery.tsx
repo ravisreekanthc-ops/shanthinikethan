@@ -95,16 +95,16 @@ export default function VideoGallery() {
               <Film className="w-4 h-4 text-gold-400" />
             </div>
 
-            <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1">
+            <div className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto max-h-none lg:max-h-[580px] gap-3 pb-3 lg:pb-0 pr-1 no-scrollbar touch-pan-x">
               {OFFICIAL_VIDEOS.map((vid) => {
                 const isSelected = activeVideo.youtubeId === vid.youtubeId;
                 return (
                   <div
                     key={vid.id}
                     onClick={() => setActiveVideo(vid)}
-                    className={`p-3.5 rounded-2xl cursor-pointer transition-all flex items-center gap-4 border ${
+                    className={`p-3 sm:p-3.5 rounded-2xl cursor-pointer transition-all flex items-center gap-3 sm:gap-4 border shrink-0 w-[270px] sm:w-[320px] lg:w-full active:scale-95 ${
                       isSelected
-                        ? "bg-navy-800/90 border-gold-500/60 shadow-lg scale-[1.02]"
+                        ? "bg-navy-800/90 border-gold-500/60 shadow-lg scale-[1.01]"
                         : "bg-navy-900/50 hover:bg-navy-900 border-navy-800 hover:border-navy-700"
                     }`}
                   >
