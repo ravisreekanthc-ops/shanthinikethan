@@ -8,6 +8,7 @@ import ToppersWallOfFame from "@/components/ToppersWallOfFame";
 import SchoolEvents from "@/components/SchoolEvents";
 import SchoolGallery from "@/components/SchoolGallery";
 import VideoGallery from "@/components/VideoGallery";
+import FacebookFeedSection from "@/components/FacebookFeedSection";
 import MandatoryDisclosure from "@/components/MandatoryDisclosure";
 import ParentFAQ from "@/components/ParentFAQ";
 import TestimonialsMap from "@/components/TestimonialsMap";
@@ -43,7 +44,10 @@ export default function HomePage() {
       {/* 9. Official YouTube Broadcast Reel & Interactive Playlist */}
       <VideoGallery />
 
-      {/* 10. CBSE Mandatory Public Disclosure Repository */}
+      {/* 10. Official Facebook Live Community Feed & Updates */}
+      <FacebookFeedSection />
+
+      {/* 11. CBSE Mandatory Public Disclosure Repository */}
       <MandatoryDisclosure />
 
       {/* 11. Parent FAQ & Objection-Crusher Accordion */}

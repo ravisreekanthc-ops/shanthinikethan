@@ -6,6 +6,7 @@ import QuickActionDock from "@/components/QuickActionDock";
 import MarketingAnnouncementBar from "@/components/MarketingAnnouncementBar";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://srishantiniketancbse.com"),
   title: "Sri Shantiniketan CBSE School, Nandyal | Affiliation No: 130730",
   description:
     "Official portal of Sri Shantiniketan CBSE School, Nandyal (Affiliation No: 130730). Offering holistic CBSE education from Nursery to Grade X with integrated IIT-JEE/NEET foundation, 5-acre eco-campus, and 100% board pass results.",
@@ -27,6 +28,18 @@ export const metadata: Metadata = {
     siteName: "Sri Shantiniketan CBSE School",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/images/slogo2.png",
+        width: 800,
+        height: 800,
+        alt: "Sri Shantiniketan CBSE School Crest Logo",
+      },
+    ],
+  },
+  icons: {
+    icon: "/images/slogo2.png",
+    apple: "/images/slogo2.png",
   },
   robots: {
     index: true,
@@ -45,7 +58,7 @@ export default function RootLayout({
     name: "Sri Shantiniketan CBSE School",
     alternateName: "Sri Shantiniketan School Nandyal",
     url: "https://srishantiniketancbse.com",
-    logo: "https://srishantiniketancbse.com/images/logo.png",
+    logo: "https://www.srishantiniketancbse.com/images/slogo2.png",
     description:
       "Premier CBSE-affiliated co-educational school in Nandyal, Andhra Pradesh, offering education from Pre-Primary through Class X with integrated IIT-JEE foundation.",
     identifier: "CBSE Affiliation No: 130730",
@@ -89,7 +102,7 @@ export default function RootLayout({
       },
     ],
     sameAs: [
-      "https://facebook.com/srishantiniketan",
+      "https://www.facebook.com/shantiniketancbsendl/",
       "https://youtube.com/@srishantiniketancbse",
     ],
   };

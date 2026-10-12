@@ -94,6 +94,19 @@ export default function Navigation() {
             </a>
             <span className="hidden sm:inline text-slate-700">|</span>
             <a
+              href="https://www.facebook.com/shantiniketancbsendl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-blue-300 hover:text-white bg-blue-600/30 hover:bg-blue-600/50 px-2 sm:px-2.5 py-1 rounded-full border border-blue-500/30 transition-all text-[11px] sm:text-xs font-semibold"
+              aria-label="Official Facebook Page: @shantiniketancbsendl"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <span className="hidden sm:inline text-slate-700">|</span>
+            <a
               href="#parent-portal"
               className="hidden sm:inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 bg-gold-600/20 px-2.5 py-0.5 rounded-full border border-gold-500/30 transition-all text-xs"
             >
@@ -116,8 +129,12 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Identity / Emblem */}
           <Link href="/" className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-navy-900 to-navy-800 text-gold-400 flex items-center justify-center font-bold text-lg shadow-md border border-gold-500/30 group-hover:scale-105 transition-transform">
-              <GraduationCap className="w-6 h-6 text-gold-400" />
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-white flex items-center justify-center p-0.5 shadow-md border border-slate-200/80 group-hover:scale-105 transition-transform shrink-0">
+              <img
+                src="/images/slogo2.png"
+                alt="Sri Shantiniketan CBSE School Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-lg sm:text-xl tracking-tight text-navy-900 group-hover:text-navy-800 transition-colors font-display">
@@ -346,6 +363,21 @@ export default function Navigation() {
               >
                 Contact & Campus Location
               </Link>
+              <a
+                href="https://www.facebook.com/shantiniketancbsendl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-bold text-blue-700 bg-blue-50/90 p-3 rounded-xl border border-blue-200 flex items-center justify-between active:bg-blue-100 transition-colors min-h-[44px]"
+              >
+                <span className="flex items-center gap-2">
+                  <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  Official Facebook Page (@shantiniketancbsendl)
+                </span>
+                <ExternalLink className="w-4 h-4 text-blue-600" />
+              </a>
             </div>
 
             <div className="pt-4 border-t border-slate-200 space-y-3">
